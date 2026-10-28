@@ -1,0 +1,36 @@
+# Databricks Apps runtime config. Single app: FastAPI serves /api/* and the built React app (backend/static).
+# NOT YET DEPLOYED/VERIFIED — see README "Deploy".
+command:
+  - sh
+  - -c
+  - uvicorn backend.main:app --host 0.0.0.0 --port ${DATABRICKS_APP_PORT:-8000}
+
+env:
+  # Apps inject DATABRICKS_HOST, DATABRICKS_CLIENT_ID and DATABRICKS_CLIENT_SECRET (the app's service principal) automatically.
+  # These reference App *resources* you add in the Databricks UI (Edit app → Resources). Use these exact resource keys:
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse        # resource type: SQL warehouse, permission: Can use
+  - name: GENIE_SPACE_ID
+    valueFrom: genie-space          # resource type: Genie space, permission: Can run
+
+  # Schema mapping — fill from databricks/schema_inventory.md after you have inspected the real columns.
+  - name: DATABRICKS_CATALOG
+    value: calgary_agent_hackathon
+  - name: DATABRICKS_SCHEMA
+    value: alberta_water_well_data
+  # - name: WELLS_TABLE
+  #   value: <confirmed table or curated view>
+  # - name: WELLS_COL_ID
+  #   value: <column>
+  # - name: WELLS_COL_LATITUDE
+  #   value: <column>
+  # - name: WELLS_COL_LONGITUDE
+  #   value: <column>
+  # - name: WELLS_COL_DEPTH
+  #   value: <column>
+  # - name: WELLS_DEPTH_UNIT
+  #   value: <m or ft — confirm>
+  # - name: WELLS_COL_YIELD
+  #   value: <column>
+  # - name: WELLS_YIELD_UNIT
+  #   value: <unit — confirm>

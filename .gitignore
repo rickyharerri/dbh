@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+frontend/dist/
+*.log
+.DS_Store
+# NOTE: backend/static (the built React app) is intentionally NOT ignored, so `databricks sync` uploads it.

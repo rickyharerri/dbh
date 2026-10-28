@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white font-sans text-slate-800 antialiased; font-size: 1rem; line-height: 1.55; }
+  h1, h2, h3 { @apply text-ink; }
+  :focus-visible { outline: 3px solid #0369a1; outline-offset: 2px; border-radius: 4px; }
+  button:disabled { cursor: not-allowed; }
+}
+
+@layer components {
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-4 py-2 text-base font-semibold transition-colors; }
+  .btn-primary { @apply bg-teal-700 text-white hover:bg-teal-800 disabled:bg-slate-300 disabled:text-slate-600; }
+  .btn-secondary { @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 disabled:text-slate-400; }
+  .field { @apply min-h-[44px] w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-base text-slate-900 placeholder:text-slate-400; }
+  .panel { @apply rounded-lg border border-slate-200 bg-white; }
+}
+
+/* Leaflet needs a definite height and should sit under dialogs */
+.leaflet-container { font: inherit; z-index: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

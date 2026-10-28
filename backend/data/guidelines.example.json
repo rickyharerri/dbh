@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy to e.g. backend/data/guidelines.json and set QUALITY_GUIDELINES_FILE. Fill ONLY with values from a documented, versioned source you have verified (e.g. a specific edition of a federal/provincial drinking-water guideline). The app ships no real guideline values on purpose.",
+  "reference": "<name of the guideline document>",
+  "version": "<edition / year>",
+  "parameters": {
+    "<Parameter name exactly as it appears in the data>": {
+      "limit": 0.0,
+      "unit": "<unit exactly matching the data, e.g. mg/L>",
+      "comparison": "max"
+    }
+  }
+}
